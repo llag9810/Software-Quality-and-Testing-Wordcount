@@ -1,5 +1,6 @@
 import java.io.*;
 import java.util.Scanner;
+import java.util.regex.Pattern;
 
 public class Main {
 
@@ -14,6 +15,7 @@ public class Main {
 
     public static void main(String[] args) {
         parseArgument(args);
+        Counter counter = new Counter(fileName);
         FileInputStream fis = null;
 
         try {
@@ -23,11 +25,11 @@ public class Main {
         }
 
         if (charCounter) {
-            countChar(fis, ps);
+            counter.countChar(fis, ps);
         }
 
         if (wordCounter) {
-
+            counter.countWords(fis, ps);
         }
 
     }
@@ -75,46 +77,6 @@ public class Main {
                     break;
             }
         }
-    }
-
-    /**
-     * Count the number of chars in the input stream.
-     * @param is the InputStream to count.
-     * @param ps the PrintStream to write the result.
-     */
-    private static void countChar(InputStream is, PrintStream ps) {
-        try {
-            int count = is.available();
-            String note = ", " + "字符数: ";
-            ps.println(fileName + note + count);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-    /**
-     * Count the number of words in the input stream.
-     * @param is the InputStream to count.
-     * @param ps the PrintStream to write the result.
-     */
-    private static void countWords(InputStream is, PrintStream ps) {
-        //TODO: Implement this method.
-    }
-
-    /**
-     * Count the number of lines in the input stream.
-     * @param is the InputStream to count.
-     * @param ps the PrintStream to write the result.
-     */
-    private static void countLines(InputStream is, PrintStream ps) {
-        Scanner scanner = new Scanner(is);
-        int line = 0;
-        while (scanner.hasNextLine()) {
-            line++;
-            scanner.nextLine();
-        }
-        String note = ", " + "行数: ";
-        ps.println(fileName + note + line);
     }
 
 }
