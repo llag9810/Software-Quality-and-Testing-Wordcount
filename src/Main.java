@@ -19,10 +19,17 @@ public class Main {
 
     public static void main(String[] args) {
         parseArgument(args);
-        Counter counter = new Counter(fileName);
+
         if (recursive) {
+            String name = fileName;
+            if (fileName.endsWith("/")) {
+                name = fileName.substring(0, fileName.length() - 1);
+            }
+
+            name = name.substring(name.lastIndexOf("/") + 1, name.length());
 
         } else {
+            Counter counter = new Counter(fileName);
             processFile(counter, fileName, ps);
         }
     }
@@ -38,9 +45,9 @@ public class Main {
 
         for (int i = 0; i < args.length; i++) {
 
-            // fuck the stupid teacher who didn't use standard ASCII character.
+            // The official test case doesn't use standard ASCII character before.
             // So I make a replace to solve the problem.
-            args[i] = args[i].replace("–", "-");
+            args[i] = args[i].replaceAll("–", "-");
 
             switch (args[i]) {
                 case "-c":
