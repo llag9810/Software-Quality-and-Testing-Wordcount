@@ -13,8 +13,9 @@ wc.exe [parameter] [input_file_name]
 ## 运行环境
 Windows 10 64bit
 
-## 基本功能
-wc.exe -c file.c     //返回文件 file.c 的字符数
+## 使用方法
+在命令行中执行以下操作：
+wc.exe -c file.c    //返回文件 file.c 的字符数
 wc.exe -w file.c     //返回文件 file.c 的单词总数
 wc.exe -l file.c     //返回文件 file.c 的总行数
 wc.exe -o outputFile.txt     //将结果输出到指定文件outputFile.txt
